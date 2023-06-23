@@ -11,6 +11,15 @@ Dictionary<string, Banda> bandasRegistradas = new();
 bandasRegistradas.Add(ira.Nome, ira);
 bandasRegistradas.Add(beatles.Nome, beatles);
 
+Dictionary<int, Menu>opcoes = new();
+opcoes.Add(1, new MenuRegistrarBanda());
+opcoes.Add(2, new MenuRegistrarAlbum());
+opcoes.Add(3, new MenuMostrarBandas());
+opcoes.Add(4, new MenuAvaliarBanda());
+opcoes.Add(5, new MenuExibirDetalhes());
+opcoes.Add(-1, new MenuSair());
+
+
 void ExibirLogo()
 {
     Console.WriteLine(@"
@@ -38,6 +47,15 @@ void ExibirOpcoesDoMenu()
     Console.Write("\nDigite a sua opção: ");
     string opcaoEscolhida = Console.ReadLine()!;
     int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
+
+    if (opcoes.ContainsKey(opcaoEscolhidaNumerica))
+    {
+        Menu menuASerExibido = opcoes[opcaoEscolhidaNumerica];
+        
+    } else
+    {
+        Console.WriteLine("Opção inválida!");
+    }
 
     switch (opcaoEscolhidaNumerica)
     {
@@ -68,7 +86,7 @@ void ExibirOpcoesDoMenu()
             break;
         case -1:
             MenuSair menuSair = new();
-            menuSair.Executar();
+            menuSair.Executar(bandasRegistradas);
             break;
         default:
             Console.WriteLine("Opção inválida");

@@ -1,8 +1,10 @@
-﻿namespace ScreenSound.Menus;
+﻿using ScreenSound.Modelos;
 
-internal class MenuSair
+namespace ScreenSound.Menus;
+
+internal class MenuSair : Menu
 {
-    public void Executar()
+    public void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
         Console.WriteLine("Tchau tchau :)");
     }
