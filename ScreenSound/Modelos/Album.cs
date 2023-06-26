@@ -3,7 +3,7 @@
 internal class Album : IAvaliavel
 {
     private List<Musica> musicas = new List<Musica>();
-    private List<Avaliacao> notas = new List<Avaliacao>();
+    private List<Avaliacao> notas = new();
 
     public Album(string nome)
     {
@@ -18,7 +18,7 @@ internal class Album : IAvaliavel
     {
         get
         {
-            if (musicas.Count == 0) return 0;
+            if (notas.Count == 0) return 0;
             else return notas.Average(a => a.Nota);
         }
     }
